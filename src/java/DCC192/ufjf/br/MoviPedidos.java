@@ -5,18 +5,18 @@ public class MoviPedidos {
     private Pedido numPedido;
     private Produtos codProduto;
     private int quatidade;
-    private float vlrUnitario;
-    private float vlrTotal;
+    private float precoDoProduto;
+    private float valorConta;
 
     public MoviPedidos() {
     }
 
-    public MoviPedidos(Pedido numPedido, Produtos codProduto, int quatidade, float vlrUnitario, float vlrTotal) {
+    public MoviPedidos(Pedido numPedido, Produtos codProduto, int quatidade, float precoDoProduto, float valorConta) {
         this.numPedido = numPedido;
         this.codProduto = codProduto;
         this.quatidade = quatidade;
-        this.vlrUnitario = vlrUnitario;
-        this.vlrTotal = vlrTotal;
+        this.precoDoProduto = precoDoProduto;
+        this.valorConta = valorConta;
     }
 
     public Pedido getNumPedido() {
@@ -43,25 +43,25 @@ public class MoviPedidos {
         this.quatidade = quatidade;
     }
 
-    public float getVlrUnitario() {
-        return vlrUnitario;
+    public float getPrecoDoProduto() {
+        return precoDoProduto;
     }
 
-    public void setVlrUnitario(float vlrUnitario) {
-        this.vlrUnitario = vlrUnitario;
+    public void setPrecoDoProduto(float precoDoProduto) {
+        this.precoDoProduto = precoDoProduto;
     }
 
-    public float getVlrTotal() {
-        return vlrTotal;
+    public float getValorConta() {
+        return valorConta;
     }
 
-    public void setVlrTotal(float vlrTotal) {
-        this.vlrTotal = vlrTotal;
+    public void setValorConta(float valorConta) {
+        this.valorConta = valorConta;
     }    
     
     @Override
     public String toString() {
-        return  numPedido.getNumero() + " - " + codProduto.getDescricaoDoProduto() + " | " + quatidade + " * " + vlrUnitario + " = " + vlrTotal;
+        return  numPedido.getNumero() + " - " + codProduto.getDescricaoDoProduto() + " | " + quatidade + " * " + precoDoProduto + " = " + valorConta;
     }
     
 }
