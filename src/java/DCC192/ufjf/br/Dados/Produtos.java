@@ -1,4 +1,4 @@
-package DCC192.ufjf.br;
+package DCC192.ufjf.br.Dados;
 
 public class Produtos {
     private float preco;

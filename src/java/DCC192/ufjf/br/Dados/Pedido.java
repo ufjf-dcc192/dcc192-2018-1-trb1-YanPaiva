@@ -1,5 +1,5 @@
 
-package DCC192.ufjf.br;
+package DCC192.ufjf.br.Dados;
 
 import java.util.ArrayList;
 import java.util.List;
