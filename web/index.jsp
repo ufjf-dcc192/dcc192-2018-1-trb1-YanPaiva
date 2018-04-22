@@ -12,7 +12,7 @@
                 <li><a href="index.jsp">Página inicial</a></li>
                 <li><a href="cardapio.html">Cardapio</a></li>
                 <li><a href="mesas.html">Mesas</a></li>
-                <li>Controle de Mesas</li>
+                <li><a href="mesas.html">Controle de Mesas</a></li>
             </ul>
             <img src="imagens/FotoPrato.jpg" width="130" height="100">
             
