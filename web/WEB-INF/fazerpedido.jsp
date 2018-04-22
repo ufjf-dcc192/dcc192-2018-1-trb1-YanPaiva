@@ -32,7 +32,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><select name="" multiple="multiple">
+                    <td><select name="" >
                             <option>yy</option>
                             <option>yy</option>
                             <option>yyy</option>

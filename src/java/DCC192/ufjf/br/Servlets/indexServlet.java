@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author YanNotebook
  */
 @WebServlet(name = "indexServlet", urlPatterns = {"/index.html", "/controlemesas.html",
-    "/mesas.html", "/produto.html", "/fazerpedido.html"})
+    "/mesas.html", "/produto.html",
+    "/fazerpedido.html","/adcionarmesas.html"})
 public class indexServlet extends HttpServlet {
 
     @Override
@@ -32,6 +33,9 @@ public class indexServlet extends HttpServlet {
             despachante.forward(request, response);
         }else if("/fazerpedido.html".equals(request.getServletPath())){
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
+            despachante.forward(request, response);
+        }else if("/adcionarmesas.html".equals(request.getServletPath())){
+            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/adcionarmesas.jsp");
             despachante.forward(request, response);
         }
     }

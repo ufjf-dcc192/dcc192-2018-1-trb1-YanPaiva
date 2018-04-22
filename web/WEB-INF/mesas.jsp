@@ -46,9 +46,7 @@
                     <td>--</td>
                     <td><input type="radio" name="" value="" checked="checked" disabled="disabled" /> </td>
                     <td><a href="fazerpedido.html"><input type="submit" value="Fazer Pedido" name="btnPedido" /></a></td>
-                    
-                    <td><input type="submit" value="Fechar Mesa" name="btnFechar" /></td>
-                    
+                                        
                 </tr>
             </tbody>
         </table>
