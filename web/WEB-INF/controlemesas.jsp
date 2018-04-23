@@ -30,5 +30,4 @@
             </tbody>
         </table>
 
-    </body>
-</html>
+<%@include file="../jspf/footerjsp.jsp" %>

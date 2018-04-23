@@ -36,5 +36,4 @@
             <li>pedido 2</li>
         </ul>
         <input type="submit" value="Fechar Pedido" name="btnFecharPedido" />
-    </body>
-</html>
+<%@include file="../jspf/footerjsp.jsp" %>

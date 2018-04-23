@@ -12,5 +12,4 @@
         <input type="text" name="descrição da mesa" value="--" size="80" />
         <br>
         <a href="controlemesas.html"><input type="submit" value="adicionar mesa" name="btnAddMesa" /></a>
-    </body>
-</html>
+<%@include file="../jspf/footerjsp.jsp" %>

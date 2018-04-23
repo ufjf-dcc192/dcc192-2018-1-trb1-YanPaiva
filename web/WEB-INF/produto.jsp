@@ -42,5 +42,4 @@
     </div>
 </div>
 
-</body>
-</html>
+<%@include file="../jspf/footerjsp.jsp" %>
