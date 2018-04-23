@@ -10,17 +10,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Comida de vó</title>
+        <link rel="stylesheet" href="css/estilo.css">
     </head>
     <body>
-       <nav id ="menu">
-            <table border="1">
-                <tr>
-                    <th><a href="index.html">Página inicial</a></th>
-                    <th><a href="produto.html">Cardapio</a></th>
-                    <th><a href="mesas.html">Mesas</a></th>
-                    <th><a href="controlemesas.html">Controle de Mesas</a></th>
-                    <th><img src="imagens/FotoPrato.jpg" width="90"></th>
-                </tr>
-            </table>
-        </nav>
+       <div id ="navegacao">
+           <div id="area">
+              <h1 id="logo"><span class="verde">Comida de</span>vó</h1>
+              <div id="menu">
+               <table>
+                    <tr>
+                        <th><a href="index.html">Página inicial</a></th>
+                        <th><a href="produto.html">Cardapio</a></th>
+                        <th><a href="mesas.html">Mesas</a></th>
+                        <th><a href="controlemesas.html">Controle de Mesas</a></th>
+                        <th><img src="imagens/FotoPrato.jpg" width="90"></th>
+                    </tr>
+                </table>
+            
     

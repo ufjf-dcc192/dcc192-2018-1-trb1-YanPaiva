@@ -1,7 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../jspf/cabecalho.jsp" %>
-        <h3>Sejá bem vindo a nosso restaurante</h3>
+
+<div id="area-principal">
+    <div id="postagem">
+        <h2>Sejá bem vindo a nosso restaurante</h2>
         <h4>buscamos cada dia melhorar mais</h4>
-          
-    </body>
+    </div>          
+</div>
+ </div>
+ </div>
+ </div>
+</body>
 </html>

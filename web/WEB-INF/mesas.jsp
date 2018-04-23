@@ -10,7 +10,7 @@
         <h2>Selecione uma mesa</h2>
         <select name="Mesas">
             <c:forEach var="restaurante" items=${restaurante}>                
-                    <option>${restaurante.getCodigo()}</option>
+                <%--   <option>(String)${restaurante.getCodigo()}</option>   --%>
             </c:forEach>
                 
             
