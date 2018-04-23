@@ -12,15 +12,17 @@ package DCC192.ufjf.br.Dados;
 public class Itens {
     private float preco;
     private String descricaoDoProduto;
+    private String nome;
     private int codigoDoProduto;
 
     public Itens() {
     }
     
-    public Itens(float preco, String descricaoDoProduto, int codigoDoProduto) {
+    public Itens(float preco, String descricaoDoProduto, int codigoDoProduto, String nome) {
         this.preco = preco;
         this.descricaoDoProduto = descricaoDoProduto;
         this.codigoDoProduto = codigoDoProduto;
+        this.nome = nome;
     }
 
     public float getPreco() {
@@ -45,6 +47,14 @@ public class Itens {
 
     public void setCodigoDoProduto(int codigoDoProduto) {
         this.codigoDoProduto = codigoDoProduto;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
  
 }

@@ -13,18 +13,18 @@ import java.util.List;
  * @author YanNotebook
  */
 public class Estoque {
-    private List<Itens> estoque;
 
-    public Estoque() {
-        estoque = new ArrayList<Itens>();
-        Itens aux = new Itens();
-        for(int i=0;i<15;i++){
-            aux.setPreco((float)Math.random());
-            aux.setDescricaoDoProduto("iten "+i);
-            aux.setCodigoDoProduto(i+1);
-            estoque.add(aux);
+    private static List<Itens> estoque;
+
+    public static List<Itens> getItensEstoque() {
+        if (estoque == null) {
+            estoque = new ArrayList<>();
+            for (int i = 0; i <= 4; i++) {
+                estoque.add(new Itens((float) 2*i, "iten " + i, i + 1, "intem......."));
+            }
+            return estoque;
         }
-        
+        return estoque;
     }
-    
+
 }

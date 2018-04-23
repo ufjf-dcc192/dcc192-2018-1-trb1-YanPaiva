@@ -1,8 +1,13 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : produtojsp
     Created on : 20/04/2018, 22:30:23
     Author     : YanNotebook
 --%>
+
+<%@page import="java.util.List"%>
+<%@page import="DCC192.ufjf.br.Dados.Estoque"%>
+<%@page import="DCC192.ufjf.br.Dados.Itens"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../jspf/cabecalho.jsp" %>
@@ -16,41 +21,19 @@
                 </tr>
             </thead>
             <tbody>
+        
                 <tr>
-                    <td>01</td>
-                    <td>Coca-cola</td>
-                    <td>Refrigerante do tipo cola</td>
-                    <td>R$ 5,50</td>
+                    <c:forEach var="estoque" items="${estoque}">
+                <tr>
+                    <td>${estoque.getCodigoDoProduto()}</td>
+                    <td>${estoque.getDescricaoDoProduto()}</td>
+                    <td>${estoque.getNome()}</td>
+                    <td>${estoque.getPreco()}</td>
                     
                 </tr>
-                <tr>
-                    <td>02</td>
-                    <td>Sprite</td>
-                    <td>Refrigerante do tipo Limão</td>
-                    <td>R$ 6,50</td>
+            </c:forEach>
                 </tr>
-                
-                <tr>
-                    <td>03</td>
-                    <td>Suco</td>
-                    <td>suco de Limão</td>
-                    <td>R$ 6,50</td>
-                </tr>
-                
-                <tr>
-                    <td>04</td>
-                    <td>Suco</td>
-                    <td>Suco de Laranja</td>
-                    <td>R$ 6,50</td>
-                </tr>
-                
-                <tr>
-                    <td>01</td>
-                    <td>Suco</td>
-                    <td>Suco de Abacachi</td>
-                    <td>R$ 6,50</td>
-                </tr>
-                
+               
                     
             </tbody>
         </table>

@@ -13,18 +13,13 @@ import java.util.List;
  */
 public class RestauranteDeVo {
 
-    private List<Mesas> mesasDoRestaurante;
-    private Estoque estoque;
+    private static List<Mesas> mesasDoRestaurante;
+    private static Estoque estoque = new Estoque();
 
-    public RestauranteDeVo() {
-        estoque = new Estoque();
-        criaMesas();
-    }
-
-    private void criaMesas() {
+    public static List<Mesas> getInstance() {
         for (int i = 0; i < 10; i++) {
             mesasDoRestaurante.add(new Mesas(i, "Mesa"+ i));
         }
+        return mesasDoRestaurante;
     }
-    
 }
