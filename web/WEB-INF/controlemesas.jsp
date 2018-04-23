@@ -18,45 +18,15 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>01</td>
-                    <td>R$500,00</td>
-                    <td> <input type="radio" name="" value="xx" checked="checked" disabled="disabled" /></td>
-                    <td><input type="submit" value="Fechar Mesa" name="btnFechar" /></td>
-                    <td><input type="submit" value="Excluir Mesa" name="btnExcluirMesa" /></td>    
-                </tr>
-                <tr>
-                    <td>01</td>
-                    <td>R$500,00</td>
-                    <td> <input type="radio" name="" value="xx" checked="checked" disabled="disabled" /></td>
-                    <td><input type="submit" value="Fechar Mesa" name="btnFechar" /></td>
-                    <td><input type="submit" value="Excluir Mesa" name="btnExcluirMesa" /></td>    
-                </tr>
-                <tr>
-                    <td>01</td>
-                    <td>R$500,00</td>
-                    <td> <input type="radio" name="" value="xx" checked="checked" disabled="disabled" /></td>
-                    <td><input type="submit" value="Fechar Mesa" name="btnFechar" /></td>
-                    <td><input type="submit" value="Excluir Mesa" name="btnExcluirMesa" /></td>    
-                </tr>
-                <tr>
-                    <td>01</td>
-                    <td>R$500,00</td>
-                    <td> <input type="radio" name="" value="xx" checked="checked" disabled="disabled" /></td>
-                    <td><input type="submit" value="Fechar Mesa" name="btnFechar" /></td>
-                    <td><input type="submit" value="Excluir Mesa" name="btnExcluirMesa" /></td>    
-                </tr>
-                <tr>
-                    <td>01</td>
-                    <td>R$500,00</td>
-                    <td> <input type="radio" name="" value="xx" checked="checked" disabled="disabled" /></td>
-                    <td><input type="submit" value="Fechar Mesa" name="btnFechar" /></td>
-                    <td><input type="submit" value="Excluir Mesa" name="btnExcluirMesa" /></td>    
-                </tr>
-                <tr>
-                    <td colspan="5"><a href="adcionarmesas.html"><input type="submit" 
-                                                                value="Adicionar nova mesa" 
-                                                                name="btnAddMesa" /></a></td>
-                </tr>                
+                    <c:forEach var="mesasdorestaurante" items="${mesasdorestaurante}">
+                    <tr>
+                        <%-- <td>${mesasdorestaurante.getCodigo()}</td>--%>
+                        
+                    </tr>
+                    </c:forEach>
+
+
+                                    
             </tbody>
         </table>
 

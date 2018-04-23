@@ -5,6 +5,7 @@
  */
 package DCC192.ufjf.br.Dados;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,13 +14,16 @@ import java.util.List;
  */
 public class RestauranteDeVo {
 
-    private static List<Mesas> mesasDoRestaurante;
-    private static Estoque estoque = new Estoque();
-
-    public static List<Mesas> getInstance() {
-        for (int i = 0; i < 10; i++) {
-            mesasDoRestaurante.add(new Mesas(i, "Mesa"+ i));
+    private static List<Mesas> mesas;
+  
+    public static List<Mesas> getMesasRestaurante() {
+        if (mesas == null) {
+            mesas = new ArrayList<>();
+            for (int i = 0; i <= 5; i++) {
+                mesas.add(new Mesas(i));
+            }
+            return mesas;
         }
-        return mesasDoRestaurante;
+        return mesas;
     }
 }

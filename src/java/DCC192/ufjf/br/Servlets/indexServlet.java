@@ -22,15 +22,14 @@ import javax.servlet.http.HttpServletResponse;
     "/mesas.html", "/produto.html",
     "/fazerpedido.html", "/adcionarmesas.html"})
 public class indexServlet extends HttpServlet {
-    List<Mesas> restaurante;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if ("/index.html".equals(request.getServletPath())) {
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/index.jsp");
             despachante.forward(request, response);
         } else if ("/controlemesas.html".equals(request.getServletPath())) {
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/controlemesas.jsp");
-            despachante.forward(request, response);
+            listarRestaurante(request, response);
         } else if ("/mesas.html".equals(request.getServletPath())) {
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/mesas.jsp");
             despachante.forward(request, response);
@@ -47,13 +46,13 @@ public class indexServlet extends HttpServlet {
     
     private void criaEstoque(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/produto.jsp");
-            request.setAttribute("estoque", Estoque.getItensEstoque());
-            despachante.forward(request, response);
-    }
-    private void listarRestaurante(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        restaurante = RestauranteDeVo.getInstance();
-        request.setAttribute("restaurante", restaurante);
-        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/index.jsp");
+        request.setAttribute("estoque", Estoque.getItensEstoque());
         despachante.forward(request, response);
+    }
+
+    private void listarRestaurante(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/controlemesas.jsp");
+        request.setAttribute("mesasdorestaurante", RestauranteDeVo.getMesasRestaurante());
+        despachante.forward(request, response);        
     }
 }

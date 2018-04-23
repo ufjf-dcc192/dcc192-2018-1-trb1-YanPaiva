@@ -22,7 +22,6 @@
             </thead>
             <tbody>
         
-                <tr>
                     <c:forEach var="estoque" items="${estoque}">
                 <tr>
                     <td>${estoque.getCodigoDoProduto()}</td>
@@ -32,7 +31,7 @@
                     
                 </tr>
             </c:forEach>
-                </tr>
+                
                
                     
             </tbody>

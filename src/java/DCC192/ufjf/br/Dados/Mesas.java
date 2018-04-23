@@ -6,7 +6,6 @@ import java.util.List;
 public class Mesas {
 
     private int codigo;
-    private String descricao;
     private String horaAbertura;
     private String horaFechamento;
     private boolean status = false;
@@ -15,10 +14,8 @@ public class Mesas {
     public Mesas() {
     }
 
-    public Mesas(int codigo, String descricao) {
+    public Mesas(int codigo) {
         this.codigo = codigo;
-        this.descricao = descricao;
-        status = true;
         pedido = new ArrayList<>();
     }
 
@@ -30,13 +27,7 @@ public class Mesas {
         this.codigo = codigo;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+   
 
     public void addPedido(ArrayList<Itens> novosPedidos) {
         if (pedido.size() == 0) {
@@ -48,10 +39,6 @@ public class Mesas {
         }
     }
 
-    @Override
-    public String toString() {
-        return codigo + " - " + descricao;
-    }
 
     public boolean isStatus() {
         return status;
