@@ -18,9 +18,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <c:forEach var="mesasdorestaurante" items="${mesasdorestaurante}">
+                    <c:forEach var="restaurante" items="${restaurante}">
                     <tr>
-                        <%-- <td>${mesasdorestaurante.getCodigo()}</td>--%>
+                        <td>${restaurante.getCodigo()}</td>
                         
                     </tr>
                     </c:forEach>

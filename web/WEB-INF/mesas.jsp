@@ -9,9 +9,11 @@
         <hr>
         <h2>Selecione uma mesa</h2>
         <select name="Mesas">
-            <option>XX</option>
-            <option>XXX</option>
-            <option>XXXX</option>
+            <c:forEach var="restaurante" items=${restaurante}>                
+                    <option>${restaurante.getCodigo()}</option>
+            </c:forEach>
+                
+            
             
         </select>
         <table border="1">

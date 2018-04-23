@@ -12,18 +12,18 @@ import java.util.List;
  *
  * @author YanNotebook
  */
-public class RestauranteDeVo {
+public class Restaurante {
 
-    private static List<Mesas> mesas;
+    private static List<Mesas> restaurante;
   
     public static List<Mesas> getMesasRestaurante() {
-        if (mesas == null) {
-            mesas = new ArrayList<>();
+        if (restaurante == null) {
+            restaurante = new ArrayList<>();
             for (int i = 0; i <= 5; i++) {
-                mesas.add(new Mesas(i));
+                restaurante.add(new Mesas(i));
             }
-            return mesas;
+            return restaurante;
         }
-        return mesas;
+        return restaurante;
     }
 }

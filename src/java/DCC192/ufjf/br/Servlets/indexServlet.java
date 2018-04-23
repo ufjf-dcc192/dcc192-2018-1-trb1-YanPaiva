@@ -3,7 +3,7 @@ package DCC192.ufjf.br.Servlets;
 import DCC192.ufjf.br.Dados.Estoque;
 import DCC192.ufjf.br.Dados.Itens;
 import DCC192.ufjf.br.Dados.Mesas;
-import DCC192.ufjf.br.Dados.RestauranteDeVo;
+import DCC192.ufjf.br.Dados.Restaurante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,8 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author YanNotebook
  */
-@WebServlet(name = "indexServlet", urlPatterns = {"/index.html", "/controlemesas.html",
-    "/mesas.html", "/produto.html",
+@WebServlet(name = "indexServlet", urlPatterns = {"/index.html", "/produto.html",
     "/fazerpedido.html", "/adcionarmesas.html"})
 public class indexServlet extends HttpServlet {
 
@@ -27,11 +26,6 @@ public class indexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if ("/index.html".equals(request.getServletPath())) {
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/index.jsp");
-            despachante.forward(request, response);
-        } else if ("/controlemesas.html".equals(request.getServletPath())) {
-            listarRestaurante(request, response);
-        } else if ("/mesas.html".equals(request.getServletPath())) {
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/mesas.jsp");
             despachante.forward(request, response);
         } else if ("/produto.html".equals(request.getServletPath())) {
             criaEstoque(request, response);
@@ -50,9 +44,5 @@ public class indexServlet extends HttpServlet {
         despachante.forward(request, response);
     }
 
-    private void listarRestaurante(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/controlemesas.jsp");
-        request.setAttribute("mesasdorestaurante", RestauranteDeVo.getMesasRestaurante());
-        despachante.forward(request, response);        
-    }
+    
 }
