@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class Restaurante {
 
-    private static List<Mesas> restaurante;
+    private static ArrayList<Mesas> restaurante;
   
-    public static List<Mesas> getMesasRestaurante() {
+    public static ArrayList<Mesas> getMesasRestaurante() {
         if (restaurante == null) {
             restaurante = new ArrayList<>();
             for (int i = 0; i <= 5; i++) {
@@ -25,5 +25,12 @@ public class Restaurante {
             return restaurante;
         }
         return restaurante;
+    }
+    
+    public static Mesas getInstanceById(Integer id) {
+        if(restaurante == null) {
+            getMesasRestaurante();
+        }
+        return restaurante.get(id);
     }
 }

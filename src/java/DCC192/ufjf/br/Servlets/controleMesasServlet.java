@@ -40,4 +40,15 @@ public class controleMesasServlet extends HttpServlet {
             despachante.forward(request, response);
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(request.getParameter("mesas"));
+        System.out.println("aaaaaaaaaaaa");
+        Integer mesas = Integer.parseInt(request.getParameter("mesas"));
+        System.out.println(mesas);
+        request.setAttribute("mesa", Restaurante.getInstanceById(mesas));
+        
+        listarRestaurante(request, response);
+    }
 }
