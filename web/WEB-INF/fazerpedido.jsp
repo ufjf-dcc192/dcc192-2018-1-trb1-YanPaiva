@@ -36,10 +36,11 @@
         <hr>
         <ul type="circle">
             <%if(((Itens)request.getAttribute("pedidos")) != null){%>
-            <li><%=((Itens)request.getAttribute("pedidos")).getNome()%></li>
-            <%}%>        
-            <li>pedido 1</li>
-            <li>pedido 2</li>
+            <li>Item pedido
+                <%=((Itens)request.getAttribute("pedidos")).getNome()%> |
+                Numero de itens pedidos
+                <%=((Itens)request.getAttribute("pedidos")).getQuantidade()%></li>
+            <%}%>
         </ul>
         <input type="submit" value="Fechar Pedido" name="btnFecharPedido" />
 <%@include file="../jspf/footerjsp.jsp" %>

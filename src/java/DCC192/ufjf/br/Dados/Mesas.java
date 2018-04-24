@@ -9,7 +9,7 @@ public class Mesas {
     private String horaAbertura;
     private String horaFechamento;
     private boolean status = false;
-    private List<Itens> pedido;
+    private static List<Itens> pedido;
 
     public Mesas() {
     }
@@ -20,7 +20,13 @@ public class Mesas {
         this.horaAbertura= "--";
         this.horaFechamento ="--";
     }
-
+    public double valorConsumo(){
+        double valor = 0.0;
+        for(int i=0; i<pedido.size();i++){
+            valor+=(pedido.get(i).getPreco()*pedido.get(i).getQuantidade());
+        }
+        return valor;
+    }
     public int getCodigo() {
         return codigo;
     }
@@ -41,7 +47,9 @@ public class Mesas {
         }
     }
 
-
+    public String mesaLivre(){
+        return (status?"não, mesa ocupada":"sim, mesa livre");
+    }
     public boolean isStatus() {
         return status;
     }

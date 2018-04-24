@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%-- 
     Document   : controlemesasjsp
     Created on : 22/04/2018, 14:11:44
@@ -18,10 +20,13 @@
             </thead>
             <tbody>
                 <tr>
-                    <c:forEach var="restaurante" items="${restaurante}">
+                    <c:forEach var="rest" items="${restaurante}">
                     <tr>
-                        <td>${restaurante.getCodigo()}</td>
-                        
+                        <td>${rest.getCodigo()}</td>                        
+                        <td>${rest.valorConsumo()}</td>
+                        <td>${rest.mesaLivre()}</td>
+                        <td><input type="submit" value="Pedir Conta" name="btnConta" /></td>
+                        <td><input type="submit" value="excluir mesa" name="btnExcluirMesa" /></td>
                     </tr>
                     </c:forEach>
 
