@@ -17,6 +17,8 @@ public class Mesas {
     public Mesas(int codigo) {
         this.codigo = codigo;
         pedido = new ArrayList<>();
+        this.horaAbertura= "--";
+        this.horaFechamento ="--";
     }
 
     public int getCodigo() {

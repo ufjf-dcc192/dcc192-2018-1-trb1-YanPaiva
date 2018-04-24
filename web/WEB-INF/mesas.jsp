@@ -32,15 +32,26 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><%=(Mesas)request.getAttribute("mesa") != null?((Mesas)request.getAttribute("mesa")).getCodigo():""%></td>             
-                    <td><input type="radio" name="" value="" checked="checked" disabled="disabled" /> </td>
-                          
+                    
+                    <!--<td><//%=(Mesas)request.getAttribute("mesa") != null?((Mesas)request.getAttribute("mesa")).getCodigo():""%></td>-->             
+                <%if(((Mesas)request.getAttribute("mesa")) != null){%>
+                    <td><%=((Mesas)request.getAttribute("mesa")).getCodigo()%></td>
+                    <td><%=((Mesas)request.getAttribute("mesa")).getHoraAbertura()%></td>
+                    <td><%=((Mesas)request.getAttribute("mesa")).getHoraFechamento()%></td>
+                    <%if(((Mesas)request.getAttribute("mesa")).isStatus())
+                    {  
+                    %>
+                        <td><input type="radio" name="" value="" checked="checked" disabled="disabled" /> </td>
+                    <%}else{%>
+                        <td><input type="radio" name="" value="" disabled="disabled" /> </td>
+                    <%}%>
+                    <td><a href="fazerpedido.html"><input type="submit" value="Fazer Pedido" name="btnPedido" /></a></td>
                     <%--<td><input type="radio" name="" value="" checked="checked" disabled="disabled" /> </td>
                     <td>xx</td>
                     <td>18:00</td>
                     <td>--</td>
-                    <td><a href="fazerpedido.html"><input type="submit" value="Fazer Pedido" name="btnPedido" /></a></td>
                     --%>                    
+                <%}%>
                 </tr>
             </tbody>
         </table>
