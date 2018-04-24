@@ -14,15 +14,17 @@ public class Itens {
     private String descricaoDoProduto;
     private String nome;
     private int codigoDoProduto;
+    private int quantidade;
 
     public Itens() {
     }
     
-    public Itens(float preco, String descricaoDoProduto, int codigoDoProduto, String nome) {
+    public Itens(float preco, String nome, int codigoDoProduto, String descricaoDoProduto) {
         this.preco = preco;
         this.descricaoDoProduto = descricaoDoProduto;
         this.codigoDoProduto = codigoDoProduto;
         this.nome = nome;
+        this.quantidade = 0;
     }
 
     public float getPreco() {
@@ -55,6 +57,14 @@ public class Itens {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
  
 }

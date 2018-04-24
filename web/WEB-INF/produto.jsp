@@ -25,12 +25,12 @@
             </thead>
             <tbody>
 
-                <c:forEach var="estoque" items="${estoque}">
+                <c:forEach var="est" items="${estoque}">
                     <tr>
-                        <td>${estoque.getCodigoDoProduto()}</td>
-                        <td>${estoque.getDescricaoDoProduto()}</td>
-                        <td>${estoque.getNome()}</td>
-                        <td>${estoque.getPreco()}</td>
+                        <td>${est.getCodigoDoProduto()}</td>
+                        <td>${est.getDescricaoDoProduto()}</td>
+                        <td>${est.getNome()}</td>
+                        <td>${est.getPreco()}</td>
 
                     </tr>
                 </c:forEach>

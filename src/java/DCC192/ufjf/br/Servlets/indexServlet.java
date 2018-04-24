@@ -18,8 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author YanNotebook
  */
-@WebServlet(name = "indexServlet", urlPatterns = {"/index.html", "/produto.html",
-    "/fazerpedido.html", "/adcionarmesas.html"})
+@WebServlet(name = "indexServlet", urlPatterns = {"/index.html", "/produto.html","/adcionarmesas.html"})
 public class indexServlet extends HttpServlet {
 
     @Override
@@ -29,9 +28,6 @@ public class indexServlet extends HttpServlet {
             despachante.forward(request, response);
         } else if ("/produto.html".equals(request.getServletPath())) {
             criaEstoque(request, response);
-        } else if ("/fazerpedido.html".equals(request.getServletPath())) {
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
-            despachante.forward(request, response);
         } else if ("/adcionarmesas.html".equals(request.getServletPath())) {
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/adcionarmesas.jsp");
             despachante.forward(request, response);
@@ -43,6 +39,11 @@ public class indexServlet extends HttpServlet {
         request.setAttribute("estoque", Estoque.getItensEstoque());
         despachante.forward(request, response);
     }
+   /* private void estoqueToPedido(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
+        request.setAttribute("eststoque", Estoque.getItensEstoque());
+        despachante.forward(request, response);
+    }*/
 
     
 }
