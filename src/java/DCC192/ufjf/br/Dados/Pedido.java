@@ -14,16 +14,18 @@ import java.util.List;
  */
 public class Pedido {
 
-    private static List<Itens> pedido;
+    private static ArrayList<Itens> pedido;
 
-    public static List<Itens> getItensEstoque() {
+    public static ArrayList<Itens> getItensEstoque() {
         if (pedido == null) {
             pedido = new ArrayList<>();
             return pedido;
         }
         return pedido;
     }
-
+    public static void limpaArray(){
+        pedido.removeAll(pedido);
+    }
     public static int getIndiceByName(String name) {
         int i =0;
         if (pedido.size() != 0) {

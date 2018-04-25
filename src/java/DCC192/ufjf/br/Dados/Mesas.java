@@ -77,5 +77,9 @@ public class Mesas {
     public void setHoraFechamento(String horaFechamento) {
         this.horaFechamento = horaFechamento;
     }
+    public void setHoraFechamento() {
+        this.horaFechamento = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+                                    .format(System.currentTimeMillis()); 
+    }
 
 }

@@ -45,5 +45,6 @@
                         </c:forEach>
             <%}%>
         </ul>
-        <input type="submit" value="Fechar Pedido" name="btnFecharPedido" />
+        <a href="fechapedido.html" >
+            <input type="submit" value="Fechar Pedido" name="btnFecharPedido" /></a>
 <%@include file="../jspf/footerjsp.jsp" %>

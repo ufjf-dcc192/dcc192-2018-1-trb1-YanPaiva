@@ -23,16 +23,42 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author YanNotebook
  */
-@WebServlet(name = "pedidoServlet", urlPatterns = {"/fazerpedido.html"})
+@WebServlet(name = "pedidoServlet", urlPatterns = {"/fazerpedido.html", "/abrirmesa.html", "/fechapedido.html"})
 public class pedidoServlet extends HttpServlet {
+
+    private static int saveID;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
-        request.setAttribute("estoque", Estoque.getItensEstoque());
-        request.setAttribute("pedidos", Pedido.getItensEstoque());
-        Restaurante.getMesasRestaurante().get(Integer.parseInt(request.getParameter("id"))).setHoraAbertura();
-        despachante.forward(request, response);
+        if ("/fazerpedido.html".equals(request.getServletPath())) {
+            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
+            request.setAttribute("estoque", Estoque.getItensEstoque());
+            request.setAttribute("pedidos", Pedido.getItensEstoque());
+            despachante.forward(request, response);
+        } else if ("/abrirmesa.html".equals(request.getServletPath())) {
+            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
+            request.setAttribute("estoque", Estoque.getItensEstoque());
+            request.setAttribute("pedidos", Pedido.getItensEstoque());
+            saveID = Integer.parseInt(request.getParameter("id"));
+            if (Restaurante.getMesasRestaurante().get(saveID).getHoraAbertura().equals("--")) {
+                Restaurante.getMesasRestaurante().get(saveID).setHoraAbertura();
+                Restaurante.getMesasRestaurante().get(saveID).setStatus(true);
+            }
+            if(!Restaurante.getMesasRestaurante().get(saveID).getHoraFechamento().equals("--")){
+                Restaurante.getMesasRestaurante().get(saveID).setHoraAbertura();
+                Restaurante.getMesasRestaurante().get(saveID).setHoraFechamento("--");
+                Restaurante.getMesasRestaurante().get(saveID).setStatus(true);
+                
+            }
+            despachante.forward(request, response);
+        } else if ("/fechapedido.html".equals(request.getServletPath())) {
+            request.setAttribute("restaurante", Restaurante.getMesasRestaurante());
+            Restaurante.getMesasRestaurante().get(saveID).addPedido(Pedido.getItensEstoque());
+            System.out.println(Restaurante.getMesasRestaurante().get(saveID).getPedido().get(0).getNome());
+            Pedido.limpaArray();
+            response.sendRedirect("mesas.html");
+            
+        }
 
     }
 
@@ -45,9 +71,9 @@ public class pedidoServlet extends HttpServlet {
                 aux.setQuantidade(qtdPedido);
                 Pedido.getItensEstoque().add(aux);
                 response.sendRedirect("fazerpedido.html");
-            }else{
-                int indice= Pedido.getIndiceByName(nomeitemPedido);
-                int valorAntigo=Pedido.getItensEstoque().get(indice).getQuantidade();
+            } else {
+                int indice = Pedido.getIndiceByName(nomeitemPedido);
+                int valorAntigo = Pedido.getItensEstoque().get(indice).getQuantidade();
                 Pedido.getItensEstoque().get(indice).setQuantidade(valorAntigo + qtdPedido);
                 response.sendRedirect("fazerpedido.html");
             }
