@@ -26,43 +26,46 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "pedidoServlet", urlPatterns = {"/fazerpedido.html"})
 public class pedidoServlet extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
         request.setAttribute("estoque", Estoque.getItensEstoque());
-        request.setAttribute("pedidos",Pedido.getItensEstoque());            
+        request.setAttribute("pedidos", Pedido.getItensEstoque());
         despachante.forward(request, response);
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nomeitemPedido = request.getParameter("pedidos");
-        Integer qtdPedido =Integer.parseInt(request.getParameter("Quantidade"));
+        Integer qtdPedido = Integer.parseInt(request.getParameter("Quantidade"));
         if (qtdPedido > 0) {
             Itens aux = Estoque.getInstanceByName(nomeitemPedido);
-            aux.setQuantidade(qtdPedido);
-            //Pedido.getItensEstoque().add(aux);
-            addNovaRequisição(aux);
-            response.sendRedirect("fazerpedido.html");
+            if (!jaFoiAdd(aux)) {
+                aux.setQuantidade(qtdPedido);
+                Pedido.getItensEstoque().add(aux);
+                response.sendRedirect("fazerpedido.html");
+            }else{
+                int indice= Pedido.getIndiceByName(nomeitemPedido);
+                int valorAntigo=Pedido.getItensEstoque().get(indice).getQuantidade();
+                Pedido.getItensEstoque().get(indice).setQuantidade(valorAntigo + qtdPedido);
+                response.sendRedirect("fazerpedido.html");
+            }
+
         } else {
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
             request.setAttribute("estoque", Estoque.getItensEstoque());
             despachante.forward(request, response);
         }
-
     }
-    private void addNovaRequisição(Itens aux) {
+
+    private boolean jaFoiAdd(Itens aux) {
         int i;
-        for(i=0;i<Pedido.getItensEstoque().size() &&
-                !Pedido.getItensEstoque().get(i).getNome().equals(aux.getNome());i++);
-        if(i==Pedido.getItensEstoque().size()){
-            Pedido.getItensEstoque().add(aux);
-        }else{
-            int quantidadeAntiga =0; 
-                quantidadeAntiga +=Pedido.getItensEstoque().get(i).getQuantidade() + aux.getQuantidade();
-                Pedido.getItensEstoque().get(i).setQuantidade(quantidadeAntiga);
+        for (i = 0; i < Pedido.getItensEstoque().size()
+                && !Pedido.getItensEstoque().get(i).getNome().equals(aux.getNome()); i++);
+        if (i == Pedido.getItensEstoque().size()) {
+            return false;
         }
+        return true;
     }
 
 }

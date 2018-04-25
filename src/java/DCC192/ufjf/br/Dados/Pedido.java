@@ -24,6 +24,18 @@ public class Pedido {
         return pedido;
     }
 
+    public static int getIndiceByName(String name) {
+        int i =0;
+        if (pedido.size() != 0) {
+            for (i =0; !name.equals(pedido.get(i).getNome())
+                    && i < pedido.size(); i++);
+        }
+        if (i == pedido.size()) {
+            return -1;
+        }
+        return i;
+    }
+
     public static Itens getInstanceById(Integer id) {
         if (pedido == null) {
             getItensEstoque();
@@ -32,10 +44,4 @@ public class Pedido {
 
     }
 
-    public static Itens getInstanceByName(String name) {
-        int i;
-        for (i = 0; !name.equals(pedido.get(i).getNome()); i++);
-        return pedido.get(i);
-
-    }
 }
