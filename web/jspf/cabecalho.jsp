@@ -15,7 +15,7 @@
     <body>
        <div id ="navegacao">
            <div id="area">
-              <h1 id="logo"><span class="verde">Comida de</span>vó</h1>
+              <h1><span class="verde">Comida de</span>vó</h1>
               <div id="menu">
                <table>
                     <tr>

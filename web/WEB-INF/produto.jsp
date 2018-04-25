@@ -11,8 +11,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../jspf/cabecalho.jsp" %>
-<div id="area-principal">
-    <div id="postagem">
 
         <table border="1">
             <thead>
@@ -39,7 +37,6 @@
 
             </tbody>
         </table>
-    </div>
-</div>
+
 
 <%@include file="../jspf/footerjsp.jsp" %>
