@@ -26,5 +26,6 @@
                         <th><img src="imagens/FotoPrato.jpg" width="90"></th>
                     </tr>
                 </table>
-            
+              <hr>
+      
     

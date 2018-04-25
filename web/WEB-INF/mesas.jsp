@@ -11,7 +11,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../jspf/cabecalho.jsp" %>
-        <hr>
         <h2>Selecione uma mesa</h2>
         <form method="post">
             <select name="mesas" >

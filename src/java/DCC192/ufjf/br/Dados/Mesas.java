@@ -5,18 +5,19 @@ import java.util.List;
 
 public class Mesas {
 
+
     private int codigo;
     private String horaAbertura;
     private String horaFechamento;
     private boolean status = false;
-    private static List<Itens> pedido;
+    private static ArrayList<Itens> pedido;
 
     public Mesas() {
     }
 
     public Mesas(int codigo) {
         this.codigo = codigo;
-        pedido = new ArrayList<>();
+    //    pedido = new ArrayList<>();
         this.horaAbertura= "--";
         this.horaFechamento ="--";
     }
@@ -35,10 +36,11 @@ public class Mesas {
         this.codigo = codigo;
     }
 
-   
-
+    public ArrayList<Itens> getPedido() {
+        return pedido;
+    }
     public void addPedido(ArrayList<Itens> novosPedidos) {
-        if (pedido.size() == 0) {
+        if (pedido == null) {
             this.pedido = novosPedidos;
         } else {
             for (int i = 0; i < novosPedidos.size(); i++) {

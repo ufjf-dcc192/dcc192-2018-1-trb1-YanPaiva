@@ -10,6 +10,7 @@ import DCC192.ufjf.br.Dados.Itens;
 import DCC192.ufjf.br.Dados.Restaurante;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,20 +34,27 @@ public class pedidoServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Itens novoItem;
+        ArrayList<Itens> novoItem;
         String nomeitemPedido = request.getParameter("pedidos");
         Integer qtdPedido = Integer.parseInt(request.getParameter("Quantidade"));
-
-        if (qtdPedido != null) {
-
-            novoItem = Estoque.getInstanceByName(nomeitemPedido);
-            if (novoItem != null) {
-                novoItem.setQuantidade(qtdPedido);
-                request.setAttribute("pedidos", novoItem);
+         
+        if (qtdPedido > 0) {
+            novoItem = new ArrayList<>();
+            Itens aux = Estoque.getInstanceByName(nomeitemPedido);
+            if (aux != null) {
+                aux.setQuantidade(qtdPedido);
+                novoItem.add(aux);
+                Restaurante.getMesasRestaurante().get(0).addPedido(novoItem);
+                request.setAttribute("pedidos", Restaurante.getMesasRestaurante().get(0).getPedido());
                 RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
-                //request.setAttribute("estoque", Estoque.getItensEstoque());
+                request.setAttribute("estoque", Estoque.getItensEstoque());
                 despachante.forward(request, response);
             }
+        
+        } else {
+            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
+            request.setAttribute("estoque", Estoque.getItensEstoque());
+            despachante.forward(request, response);
         }
 
     }

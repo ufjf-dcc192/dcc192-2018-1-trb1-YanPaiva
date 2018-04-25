@@ -39,11 +39,6 @@ public class indexServlet extends HttpServlet {
         request.setAttribute("estoque", Estoque.getItensEstoque());
         despachante.forward(request, response);
     }
-   /* private void estoqueToPedido(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
-        request.setAttribute("eststoque", Estoque.getItensEstoque());
-        despachante.forward(request, response);
-    }*/
-
+   
     
 }

@@ -10,7 +10,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../jspf/cabecalho.jsp" %>
         <hr>
-        <form method="post">
         <table border="1">
             <thead>
                 <tr>
@@ -20,26 +19,30 @@
             </thead>
             <tbody>
                 <tr>
+        <form method="post">
                     <td><select name="pedidos" >
                         <c:forEach var="est" items="${estoque}">
                             <option>${est.getNome()}</option>
                         </c:forEach>
                         </select></td>
                     
-                        <td><input type="text" name="Quantidade" value="--" size="100" /></td>
+                        <td><input type="number" name="Quantidade" value="0" size="100" /></td>
                     <td><input type="submit" value="Adicionar ao pedido" name="btnAdicionarPedido" /></td>
+        </form>
                 </tr>           
             </tbody>
         
             </table>
-        </form>
         <hr>
         <ul type="circle">
-            <%if(((Itens)request.getAttribute("pedidos")) != null){%>
-            <li>Item pedido
-                <%=((Itens)request.getAttribute("pedidos")).getNome()%> |
-                Numero de itens pedidos
-                <%=((Itens)request.getAttribute("pedidos")).getQuantidade()%></li>
+            <%if((request.getAttribute("pedidos")) != null){%>
+                        <c:forEach var="ped" items="${pedidos}">
+                            <li>Item pedido
+                            ${ped.getNome()}
+                            Numero de itens pedidos
+                            ${ped.getQuantidade()}
+                            </li>
+                        </c:forEach>
             <%}%>
         </ul>
         <input type="submit" value="Fechar Pedido" name="btnFecharPedido" />
