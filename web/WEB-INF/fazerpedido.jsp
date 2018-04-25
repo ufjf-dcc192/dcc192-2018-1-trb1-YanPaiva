@@ -26,7 +26,7 @@
                         </c:forEach>
                         </select></td>
                     
-                        <td><input type="number" name="Quantidade" value="0" size="100" /></td>
+                        <td><input type="number" name="Quantidade" value="0" /></td>
                     <td><input type="submit" value="Adicionar ao pedido" name="btnAdicionarPedido" /></td>
         </form>
                 </tr>           

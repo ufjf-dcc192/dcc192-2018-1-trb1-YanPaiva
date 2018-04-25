@@ -12,33 +12,30 @@ import java.util.List;
  *
  * @author YanNotebook
  */
-public class Estoque {
+public class Pedido {
 
-    private static List<Itens> estoque;
+    private static List<Itens> pedido;
 
     public static List<Itens> getItensEstoque() {
-        if (estoque == null) {
-            estoque = new ArrayList<>();
-            for (int i = 0; i <= 4; i++) {
-                estoque.add(new Itens((float) 2 * i, "iten " + i, i + 1, "intem......."));
-            }
-            return estoque;
+        if (pedido == null) {
+            pedido = new ArrayList<>();
+            return pedido;
         }
-        return estoque;
+        return pedido;
     }
 
     public static Itens getInstanceById(Integer id) {
-        if (estoque == null) {
+        if (pedido == null) {
             getItensEstoque();
         }
-        return estoque.get(id);
+        return pedido.get(id);
 
     }
 
     public static Itens getInstanceByName(String name) {
         int i;
-        for (i = 0; !name.equals(estoque.get(i).getNome()); i++);
-        return estoque.get(i);
+        for (i = 0; !name.equals(pedido.get(i).getNome()); i++);
+        return pedido.get(i);
 
     }
 }
