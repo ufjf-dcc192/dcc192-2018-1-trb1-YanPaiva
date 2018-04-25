@@ -45,7 +45,7 @@
                         <td><input type="radio" name="" value="" disabled="disabled" /> </td>
                     <%}%>
                 
-                    <td><a href="fazerpedido.html" ><input type="submit" value="Fazer Pedido" name="btnPedido" /></a></td>
+                    <td><a href='fazerpedido.html?id=<%=((Mesas)request.getAttribute("mesa")).getCodigo()%>' ><input type="submit" value="Fazer Pedido" name="btnPedido" /></a></td>
                 <%}%>
                 </tr>
             </tbody>

@@ -33,4 +33,9 @@ public class Restaurante {
         }
         return restaurante.get(id);
     }
+    public static int getIndiceByMesa(Mesas buscando){
+        int i;
+       // for(i=0;buscando.get restaurante.get(i).getCodigo() ;i++)
+       return 0;
+    }
 }

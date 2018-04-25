@@ -1,5 +1,6 @@
 package DCC192.ufjf.br.Dados;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,8 +65,9 @@ public class Mesas {
         return horaAbertura;
     }
 
-    public void setHoraAbertura(String horaAbertura) {
-        this.horaAbertura = horaAbertura;
+    public void setHoraAbertura() {
+        this.horaAbertura = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+                                    .format(System.currentTimeMillis()); 
     }
 
     public String getHoraFechamento() {

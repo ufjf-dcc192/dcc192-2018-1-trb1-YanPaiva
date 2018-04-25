@@ -31,6 +31,7 @@ public class pedidoServlet extends HttpServlet {
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fazerpedido.jsp");
         request.setAttribute("estoque", Estoque.getItensEstoque());
         request.setAttribute("pedidos", Pedido.getItensEstoque());
+        Restaurante.getMesasRestaurante().get(Integer.parseInt(request.getParameter("id"))).setHoraAbertura();
         despachante.forward(request, response);
 
     }
