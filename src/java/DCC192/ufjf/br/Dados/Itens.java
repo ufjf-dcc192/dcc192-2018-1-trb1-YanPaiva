@@ -10,16 +10,16 @@ package DCC192.ufjf.br.Dados;
  * @author YanNotebook
  */
 public class Itens {
-    private float preco;
+    private Double preco;
     private String descricaoDoProduto;
     private String nome;
-    private int codigoDoProduto;
-    private int quantidade;
+    private Integer codigoDoProduto;
+    private Integer quantidade;
 
     public Itens() {
     }
     
-    public Itens(float preco, String nome, int codigoDoProduto, String descricaoDoProduto) {
+    public Itens(Double preco, String nome, Integer codigoDoProduto, String descricaoDoProduto) {
         this.preco = preco;
         this.descricaoDoProduto = descricaoDoProduto;
         this.codigoDoProduto = codigoDoProduto;
@@ -27,11 +27,11 @@ public class Itens {
         this.quantidade = 0;
     }
 
-    public float getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(float preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 
@@ -43,7 +43,7 @@ public class Itens {
         this.descricaoDoProduto = descricaoDoProduto;
     }
 
-    public int getCodigoDoProduto() {
+    public Integer getCodigoDoProduto() {
         return codigoDoProduto;
     }
 
@@ -59,7 +59,7 @@ public class Itens {
         this.nome = nome;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 

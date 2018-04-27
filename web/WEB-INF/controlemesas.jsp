@@ -11,30 +11,33 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../jspf/cabecalho.jsp" %>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Numero da Mesa</th>
-                    <th>Consumo</th>
-                    <th>Mesa disponivel</th>
-                    <th>Pedir Conta</th>
-                    <th>Excluir Mesa</th>
-                </tr>
-            </thead>
-            <tbody>
-                    <c:forEach var="rest" items="${restaurante}">                
-                    <tr>
-                        <td>${rest.getCodigo()}</td>                        
-                        <td>${rest.valorConsumo()}</td>
-                        <td>${rest.mesaLivre()}</td>
-                        <td><a href="pedirconta.html"><input type="submit" value="Pedir Conta" name="btnConta" /></a></td>
-                        <td><input type="submit" value="excluir mesa" name="btnExcluirMesa" /></td>
-                    </tr>
-                    </c:forEach>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Numero da Mesa</th>
+            <th>Consumo</th>
+            <th>Mesa disponivel</th>
+            <th>Pedir Conta</th>
+            <th>Excluir Mesa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="rest" items="${restaurante}">                
+            <tr>
+               
+                <td>${rest.getId()}</td>
+                <td>${rest.valorConsumo()}</td>
+
+                <td>${rest.mesaLivre()}</td>
+
+                <td><a href="pedirconta.html?id=${rest.getId()}"><input type="submit" value="Pedir Conta" name="btnConta" /></a></td>
+                <td><a href="pedirconta.html?id=${rest.getId()}"><input type="submit" value="excluir mesa" name="btnExcluirMesa" /></a></td>
+            </tr>
+        </c:forEach>
 
 
-                                    
-            </tbody>
-        </table>
+
+    </tbody>
+</table>
 
 <%@include file="../jspf/footerjsp.jsp" %>

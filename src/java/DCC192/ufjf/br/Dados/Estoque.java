@@ -20,7 +20,7 @@ public class Estoque {
         if (estoque == null) {
             estoque = new ArrayList<>();
             for (int i = 0; i <= 4; i++) {
-                estoque.add(new Itens((float) 2 * i, "iten " + i, i + 1, "intem......."));
+                estoque.add(new Itens((Double) 1.2 * (i+1), "iten " + i, i + 1, "intem......."));
             }
             return estoque;
         }

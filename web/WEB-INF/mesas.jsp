@@ -15,7 +15,7 @@
         <form method="post">
             <select name="mesas" >
                 <c:forEach var="rest" items="${restaurante}">                
-                    <option value="${rest.getCodigo()}" onselect="">${rest.getCodigo()}</option>  
+                    <option value="${rest.getId()}" onselect="">${rest.getId()}</option>  
                 </c:forEach>
             </select>
             <input type="submit" value="Listar">
@@ -34,7 +34,7 @@
                     
                     <!--<td><//%=(Mesas)request.getAttribute("mesa") != null?((Mesas)request.getAttribute("mesa")).getCodigo():""%></td>-->             
                 <%if(((Mesas)request.getAttribute("mesa")) != null){%>
-                    <td><%=((Mesas)request.getAttribute("mesa")).getCodigo()%></td>
+                    <td><%=((Mesas)request.getAttribute("mesa")).getId()%></td>
                     <td><%=((Mesas)request.getAttribute("mesa")).getHoraAbertura()%></td>
                     <td><%=((Mesas)request.getAttribute("mesa")).getHoraFechamento()%></td>
                     <%if(((Mesas)request.getAttribute("mesa")).isStatus())
@@ -45,7 +45,7 @@
                         <td><input type="radio" name="" value="" disabled="disabled" /> </td>
                     <%}%>
                 
-                    <td><a href='abrirmesa.html?id=<%=((Mesas)request.getAttribute("mesa")).getCodigo()%>' ><input type="submit" value="Fazer Pedido" name="btnPedido" /></a></td>
+                    <td><a href='abrirmesa.html?id=<%=((Mesas)request.getAttribute("mesa")).getId()%>' ><input type="submit" value="Fazer Pedido" name="btnPedido" /></a></td>
                 <%}%>
                 </tr>
             </tbody>

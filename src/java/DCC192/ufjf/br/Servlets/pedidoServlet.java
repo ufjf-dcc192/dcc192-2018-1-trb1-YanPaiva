@@ -46,7 +46,7 @@ public class pedidoServlet extends HttpServlet {
             }
             if(!Restaurante.getMesasRestaurante().get(saveID).getHoraFechamento().equals("--")){
                 Restaurante.getMesasRestaurante().get(saveID).setHoraAbertura();
-                Restaurante.getMesasRestaurante().get(saveID).setHoraFechamento("--");
+                Restaurante.getMesasRestaurante().get(saveID).mesaReaberta("--");
                 Restaurante.getMesasRestaurante().get(saveID).setStatus(true);
                 
             }
@@ -66,8 +66,9 @@ public class pedidoServlet extends HttpServlet {
         String nomeitemPedido = request.getParameter("pedidos");
         Integer qtdPedido = Integer.parseInt(request.getParameter("Quantidade"));
         if (qtdPedido > 0) {
-            Itens aux = Estoque.getInstanceByName(nomeitemPedido);
-            if (!jaFoiAdd(aux)) {
+            Itens aux = new Itens();
+            aux = Estoque.getInstanceByName(nomeitemPedido);
+            if (!jaFoiAdd(aux)){ 
                 aux.setQuantidade(qtdPedido);
                 Pedido.getItensEstoque().add(aux);
                 response.sendRedirect("fazerpedido.html");
@@ -83,16 +84,14 @@ public class pedidoServlet extends HttpServlet {
             request.setAttribute("estoque", Estoque.getItensEstoque());
             despachante.forward(request, response);
         }
-    }
+        
+    }    
 
     private boolean jaFoiAdd(Itens aux) {
-        int i;
-        for (i = 0; i < Pedido.getItensEstoque().size()
-                && !Pedido.getItensEstoque().get(i).getNome().equals(aux.getNome()); i++);
-        if (i == Pedido.getItensEstoque().size()) {
-            return false;
-        }
-        return true;
+         return Pedido.getItensEstoque().contains(aux);
     }
-
 }
+
+    
+
+

@@ -34,8 +34,11 @@ public class indexServlet extends HttpServlet {
             despachante.forward(request, response);
         }else if ("/pedirconta.html".equals(request.getServletPath())) {
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/pedirconta.jsp");
-            request.setAttribute("restaurante", Restaurante.getMesasRestaurante());
-            request.setAttribute("pedidos", Restaurante.getMesasRestaurante().get(0).getPedido());
+            request.setAttribute("mesaAFechar", Restaurante.getMesasRestaurante().
+                    get(Integer.parseInt(request.getParameter("id"))));
+            request.setAttribute("pedidos", Restaurante.getMesasRestaurante().
+                    get(Integer.parseInt(request.getParameter("id"))).
+                    getPedido());
             despachante.forward(request, response);   
         }
     }
@@ -48,10 +51,10 @@ public class indexServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Integer idMesa = Integer.parseInt(request.getParameter("mesas"));
+        request.setAttribute("mesa", Restaurante.getInstanceById(idMesa));
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/pedirconta.jsp");
-            
-        request.setAttribute("mesa", Restaurante.getInstanceById(0));
-        despachante.forward(request, response);   
-    
+        request.setAttribute("restaurante", Restaurante.getMesasRestaurante());
+        despachante.forward(request, response);
     }   
 }

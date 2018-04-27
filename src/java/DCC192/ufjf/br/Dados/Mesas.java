@@ -7,7 +7,7 @@ import java.util.List;
 public class Mesas {
 
 
-    private int codigo;
+    private int id;
     private String horaAbertura;
     private String horaFechamento;
     private boolean status = false;
@@ -16,25 +16,29 @@ public class Mesas {
     public Mesas() {
     }
 
-    public Mesas(int codigo) {
-        this.codigo = codigo;
-    //    pedido = new ArrayList<>();
+    public Mesas(int id) {
+        this.id = id;
+        pedido = new ArrayList<>();
         this.horaAbertura= "--";
         this.horaFechamento ="--";
     }
-    public double valorConsumo(){
+    public Double valorConsumo(){
         double valor = 0.0;
         for(int i=0; i<pedido.size();i++){
-            valor+=(pedido.get(i).getPreco()*pedido.get(i).getQuantidade());
+            if(pedido.get(i).getPreco()!=null && pedido.get(i).getQuantidade()!=null){
+                valor+=(pedido.get(i).getPreco()*pedido.get(i).getQuantidade());
+            }else{
+                return 0.0;
+            }
         }
         return valor;
     }
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ArrayList<Itens> getPedido() {
@@ -42,12 +46,14 @@ public class Mesas {
     }
     public void addPedido(ArrayList<Itens> novosPedidos) {
         if (pedido == null) {
-            this.pedido = novosPedidos;
-        } else {
-            for (int i = 0; i < novosPedidos.size(); i++) {
+            pedido = new ArrayList<Itens>();
+        }
+        for (int i = 0; i < novosPedidos.size(); i++) {
+            if(!pedido.contains(novosPedidos.get(i))){
                 pedido.add(novosPedidos.get(i));
             }
         }
+        
     }
 
     public String mesaLivre(){
@@ -74,7 +80,7 @@ public class Mesas {
         return horaFechamento;
     }
 
-    public void setHoraFechamento(String horaFechamento) {
+    public void mesaReaberta(String horaFechamento) {
         this.horaFechamento = horaFechamento;
     }
     public void setHoraFechamento() {
