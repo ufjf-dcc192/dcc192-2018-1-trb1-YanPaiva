@@ -26,10 +26,10 @@ public class Mesas {
         this.horaAbertura= "--";
         this.horaFechamento ="--";
     }
-    public Double valorConsumo(){
+    public double valorConsumo(){
         double valor = 0.0;
         for(int i=0; i<pedido.size();i++){
-            if(pedido.get(i).getPreco()!=null && pedido.get(i).getQuantidade()!=null){
+            if(pedido.get(i).getQuantidade()!=null){
                 valor+=(pedido.get(i).getPreco()*pedido.get(i).getQuantidade());
             }else{
                 return 0.0;

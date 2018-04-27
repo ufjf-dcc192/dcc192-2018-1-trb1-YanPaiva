@@ -23,27 +23,33 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "adicionarOuExcluirMesaServlet", urlPatterns = {"/adcionarmesas.html", "/excluir.html"})
 public class adicionarOuExcluirMesaServlet extends HttpServlet {
 
-     @Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if ("/adcionarmesas.html".equals(request.getServletPath())) {
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fecharmesas.jsp");
             Restaurante.getMesasRestaurante().add(new Mesas());
             request.setAttribute("restaurante", Restaurante.getMesasRestaurante());
             despachante.forward(request, response);
-           // response.sendRedirect("controlemesas.html");
+            // response.sendRedirect("controlemesas.html");
         } else if ("/excluir.html".equals(request.getServletPath())) {
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/excluirmesa.jsp");
-            request.setAttribute("restaurante", Restaurante.getMesasRestaurante());
-            despachante.forward(request, response);
-            
+            if (!Restaurante.getMesasRestaurante().
+                    get(Integer.parseInt(request.getParameter("id"))).isStatus()) {
+
+                RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/excluirmesa.jsp");
+                request.setAttribute("restaurante", Restaurante.getMesasRestaurante());
+                despachante.forward(request, response);
+            }else{
+                response.sendRedirect("controlemesas.html");
+            }
         }
 
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int mesa = Integer.parseInt(request.getParameter("id"));
         String sim = request.getParameter("btnsim");
-        
-        if(!"".equals(sim)){
+
+        if (!"".equals(sim)) {
             Restaurante.getMesasRestaurante().remove(mesa);
             Restaurante.atualizaID();
         }

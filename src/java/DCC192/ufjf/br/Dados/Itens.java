@@ -10,7 +10,7 @@ package DCC192.ufjf.br.Dados;
  * @author YanNotebook
  */
 public class Itens {
-    private Double preco;
+    private double preco;
     private String descricaoDoProduto;
     private String nome;
     private Integer codigoDoProduto;
@@ -19,7 +19,7 @@ public class Itens {
     public Itens() {
     }
     
-    public Itens(Double preco, String nome, Integer codigoDoProduto, String descricaoDoProduto) {
+    public Itens(double preco, String nome, Integer codigoDoProduto, String descricaoDoProduto) {
         this.preco = preco;
         this.descricaoDoProduto = descricaoDoProduto;
         this.codigoDoProduto = codigoDoProduto;
@@ -27,7 +27,7 @@ public class Itens {
         this.quantidade = 0;
     }
 
-    public Double getPreco() {
+    public double getPreco() {
         return preco;
     }
 
