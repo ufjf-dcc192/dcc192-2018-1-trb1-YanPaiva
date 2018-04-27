@@ -29,10 +29,12 @@
                             <td>${ped.getPreco()}</td>                            
                             </tr>
                              </c:forEach>
-                            <td colspan="3" border="0"><input type="submit" value="Somar tudo" name="btnSomar" id="${mesaAFechar.getId()}" /></td>
+                            <td colspan="3" border="0">
+                                <input type="submit" value="Somar tudo" name="btnSomar"
+                                       id="<%=((Mesas)request.getAttribute("mesaAFechar")).getId()%>" /></td>
                         </form>  
                             <td>TOTAL A PAGAR:</td>
-                            <TD><%=((Mesas)request.getAttribute("mesa")).valorConsumo()%></TD>
+                            <TD><%=((Mesas)request.getAttribute("mesaAFechar")).valorConsumo()%></TD>
                             <tr>
                             </tr>    
                             <%}%>

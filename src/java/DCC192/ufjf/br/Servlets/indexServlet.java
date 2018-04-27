@@ -32,17 +32,23 @@ public class indexServlet extends HttpServlet {
         } else if ("/adcionarmesas.html".equals(request.getServletPath())) {
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/adcionarmesas.jsp");
             despachante.forward(request, response);
-        }else if ("/pedirconta.html".equals(request.getServletPath())) {
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/pedirconta.jsp");
-            request.setAttribute("mesaAFechar", Restaurante.getMesasRestaurante().
-                    get(Integer.parseInt(request.getParameter("id"))));
-            request.setAttribute("pedidos", Restaurante.getMesasRestaurante().
-                    get(Integer.parseInt(request.getParameter("id"))).
-                    getPedido());
-            despachante.forward(request, response);   
+        } else if ("/pedirconta.html".equals(request.getServletPath())) {
+            if (Restaurante.getMesasRestaurante().
+                    get(Integer.parseInt(request.getParameter("id"))).isStatus()) {
+                RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/pedirconta.jsp");
+                request.setAttribute("mesaAFechar", Restaurante.getMesasRestaurante().
+                        get(Integer.parseInt(request.getParameter("id"))));
+                request.setAttribute("pedidos", Restaurante.getMesasRestaurante().
+                        get(Integer.parseInt(request.getParameter("id"))).
+                        getPedido());
+                despachante.forward(request, response);
+            }else{
+                RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/controlemesas.jsp");
+                despachante.forward(request, response);
+            }
         }
     }
-    
+
     private void criaEstoque(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/produto.jsp");
         request.setAttribute("estoque", Estoque.getItensEstoque());
@@ -51,10 +57,12 @@ public class indexServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer idMesa = Integer.parseInt(request.getParameter("mesas"));
+        Integer idMesa = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("mesa", Restaurante.getInstanceById(idMesa));
-        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/pedirconta.jsp");
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/controlemesas.jsp");
+        Restaurante.getInstanceById(idMesa).setHoraFechamento();
+        Restaurante.getInstanceById(idMesa).setStatus(false);
         request.setAttribute("restaurante", Restaurante.getMesasRestaurante());
         despachante.forward(request, response);
-    }   
+    }
 }

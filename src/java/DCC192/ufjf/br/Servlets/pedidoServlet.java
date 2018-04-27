@@ -54,7 +54,6 @@ public class pedidoServlet extends HttpServlet {
         } else if ("/fechapedido.html".equals(request.getServletPath())) {
             request.setAttribute("restaurante", Restaurante.getMesasRestaurante());
             Restaurante.getMesasRestaurante().get(saveID).addPedido(Pedido.getItensEstoque());
-            System.out.println(Restaurante.getMesasRestaurante().get(saveID).getPedido().get(0).getNome());
             Pedido.limpaArray();
             response.sendRedirect("mesas.html");
             

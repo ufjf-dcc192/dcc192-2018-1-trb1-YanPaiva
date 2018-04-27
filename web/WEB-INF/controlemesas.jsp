@@ -27,11 +27,12 @@
                
                 <td>${rest.getId()}</td>
                 <td>${rest.valorConsumo()}</td>
-
                 <td>${rest.mesaLivre()}</td>
-
-                <td><a href="pedirconta.html?id=${rest.getId()}"><input type="submit" value="Pedir Conta" name="btnConta" /></a></td>
+                
+                <td><a href="pedirconta.html?id=${rest.getId()}"><input type="submit" value="Pedir Conta" name="btnConta"/></a></td>
                 <td><a href="pedirconta.html?id=${rest.getId()}"><input type="submit" value="excluir mesa" name="btnExcluirMesa" /></a></td>
+                
+                
             </tr>
         </c:forEach>
 
