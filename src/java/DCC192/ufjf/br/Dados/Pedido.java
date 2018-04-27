@@ -19,7 +19,6 @@ public class Pedido {
     public static ArrayList<Itens> getItensEstoque() {
         if (pedido == null) {
             pedido = new ArrayList<>();
-            return pedido;
         }
         return pedido;
     }

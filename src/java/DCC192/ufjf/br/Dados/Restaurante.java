@@ -22,7 +22,6 @@ public class Restaurante {
             for (int i = 0; i <= 5; i++) {
                 restaurante.add(new Mesas(i));
             }
-            return restaurante;
         }
         return restaurante;
     }
@@ -33,9 +32,9 @@ public class Restaurante {
         }
         return restaurante.get(id);
     }
-    public static int getIndiceByMesa(Mesas buscando){
-        int i;
-       // for(i=0;buscando.get restaurante.get(i).getCodigo() ;i++)
-       return 0;
+    public static void atualizaID(){
+        for(int i=0 ; i<restaurante.size();i++){
+            restaurante.get(i).setId(i);
+        }
     }
 }

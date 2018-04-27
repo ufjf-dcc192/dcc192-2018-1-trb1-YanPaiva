@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author YanNotebook
  */
 @WebServlet(name = "indexServlet", urlPatterns = {"/index.html", "/produto.html",
-    "/adcionarmesas.html", "/pedirconta.html"})
+     "/pedirconta.html"})
 public class indexServlet extends HttpServlet {
 
     @Override
@@ -29,10 +29,7 @@ public class indexServlet extends HttpServlet {
             despachante.forward(request, response);
         } else if ("/produto.html".equals(request.getServletPath())) {
             criaEstoque(request, response);
-        } else if ("/adcionarmesas.html".equals(request.getServletPath())) {
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/adcionarmesas.jsp");
-            despachante.forward(request, response);
-        } else if ("/pedirconta.html".equals(request.getServletPath())) {
+        }  else if ("/pedirconta.html".equals(request.getServletPath())) {
             if (Restaurante.getMesasRestaurante().
                     get(Integer.parseInt(request.getParameter("id"))).isStatus()) {
                 RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/pedirconta.jsp");
@@ -43,8 +40,7 @@ public class indexServlet extends HttpServlet {
                         getPedido());
                 despachante.forward(request, response);
             }else{
-                RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/controlemesas.jsp");
-                despachante.forward(request, response);
+               response.sendRedirect("controlemesas.html");
             }
         }
     }
@@ -59,7 +55,7 @@ public class indexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer idMesa = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("mesa", Restaurante.getInstanceById(idMesa));
-        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/controlemesas.jsp");
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fecharmesas.jsp");
         Restaurante.getInstanceById(idMesa).setHoraFechamento();
         Restaurante.getInstanceById(idMesa).setStatus(false);
         request.setAttribute("restaurante", Restaurante.getMesasRestaurante());

@@ -17,6 +17,8 @@
             <th>Numero da Mesa</th>
             <th>Consumo</th>
             <th>Mesa disponivel</th>
+            <th>Hora de Abertura</th>
+            <th>Hora de Fechamento</th>
             <th>Pedir Conta</th>
             <th>Excluir Mesa</th>
         </tr>
@@ -28,14 +30,16 @@
                 <td>${rest.getId()}</td>
                 <td>${rest.valorConsumo()}</td>
                 <td>${rest.mesaLivre()}</td>
-                
+                <td>${rest.getHoraAbertura()}</td>
+                <td>${rest.getHoraFechamento()}</td>
                 <td><a href="pedirconta.html?id=${rest.getId()}"><input type="submit" value="Pedir Conta" name="btnConta"/></a></td>
-                <td><a href="pedirconta.html?id=${rest.getId()}"><input type="submit" value="excluir mesa" name="btnExcluirMesa" /></a></td>
+                <td><a href="excluir.html?id=${rest.getId()}"><input type="submit" value="excluir mesa" name="btnExcluirMesa" /></a></td>
                 
                 
             </tr>
         </c:forEach>
-
+            <tr><a href="adcionarmesas.html"> 
+           <input type="submit" value="adicionar nova mesa" name="btnAddMesa" /></a></tr>
 
 
     </tbody>

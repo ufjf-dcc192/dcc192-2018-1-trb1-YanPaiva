@@ -21,8 +21,8 @@
                     <tr>
                         <th><a href="index.html">Página inicial</a></th>
                         <th><a href="produto.html">Cardapio</a></th>
-                        <th><a href="mesas.html">Mesas</a></th>
-                        <th><a href="controlemesas.html">Controle de Mesas</a></th>
+                        <th><a href="mesas.html">Gerar um Pedido</a></th>
+                        <th><a href="controlemesas.html">Fechar Mesas</a></th>
                         <th><img src="imagens/FotoPrato.jpg" width="90"></th>
                     </tr>
                 </table>

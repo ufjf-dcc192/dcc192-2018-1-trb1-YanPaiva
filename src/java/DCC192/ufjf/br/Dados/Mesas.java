@@ -11,9 +11,13 @@ public class Mesas {
     private String horaAbertura;
     private String horaFechamento;
     private boolean status = false;
-    private static ArrayList<Itens> pedido;
+    private ArrayList<Itens> pedido;
 
     public Mesas() {
+        this.id = Restaurante.getMesasRestaurante().size();
+        pedido = new ArrayList<>();
+        this.horaAbertura= "--";
+        this.horaFechamento ="--";
     }
 
     public Mesas(int id) {
@@ -49,7 +53,7 @@ public class Mesas {
             pedido = new ArrayList<Itens>();
         }
         for (int i = 0; i < novosPedidos.size(); i++) {
-            if(!pedido.contains(novosPedidos.get(i))){
+            if(!pedido.equals(novosPedidos.get(i))){
                 pedido.add(novosPedidos.get(i));
             }
         }
